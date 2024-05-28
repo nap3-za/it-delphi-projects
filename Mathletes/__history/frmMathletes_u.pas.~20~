@@ -1,0 +1,99 @@
+unit frmMathletes_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Buttons, Spin;
+
+type
+  TForm4 = class(TForm)
+    btnStart: TButton;
+    btnStop: TButton;
+    pnlOutput: TPanel;
+    mmoHighScores: TMemo;
+    mmoPlayerScores: TMemo;
+    pnlTime: TPanel;
+    pnlScore: TPanel;
+    btnReset: TBitBtn;
+    pnlHighScores: TPanel;
+    lblHighScores: TLabel;
+    pnlPlayerScores: TPanel;
+    lblPlayerScores: TLabel;
+    sedTime: TSpinEdit;
+    btnSetTimer: TButton;
+    sedAnswer: TSpinEdit;
+    btnSubmit: TButton;
+    tmrCountdown: TTimer;
+    procedure btnSetTimerClick(Sender: TObject);
+    procedure btnStartClick(Sender: TObject);
+    procedure tmrCountdownTimer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+var
+  iCountdown : Integer;
+  iTime: Integer;
+
+procedure TForm4.btnSetTimerClick(Sender: TObject);
+begin
+  iTime := sedTime.Value;
+
+  if iTime > 59 then
+  begin
+    pnlTime.Caption := IntToStr(iTime div 60) + ':' + IntToStr(iTime mod 60) + ':00';
+  end
+  else
+  begin
+    pnlTime.Caption := '00:' + IntToStr(iTime) + ':00';
+  end;
+
+end;
+
+procedure TForm4.btnStartClick(Sender: TObject);
+begin
+iCountdown := 5;
+if iTime  <= 0 then
+  begin
+    ShowMessage('No time provided');
+    Exit;         // terminates/stops the procedure
+  end;
+
+sedTime.Enabled := False;
+btnSetTimer.Enabled := False;
+
+tmrCountdown.Enabled := True;
+tmrCountdown.Interval := 1000;
+
+
+end;
+
+procedure TForm4.tmrCountdownTimer(Sender: TObject);
+begin
+
+
+
+iCountdown := iCountdown - 1;
+if iCountdown = 0 then
+  begin
+    pnlOutput.Caption := 'Go!!';
+    tmrCountdown.Enabled := False; 
+  end
+else
+  begin
+    pnlOutput.Caption := IntToStr(iCountdown);
+    iCountdown := iCountdown -1;
+  end;
+end;
+
+end.
+

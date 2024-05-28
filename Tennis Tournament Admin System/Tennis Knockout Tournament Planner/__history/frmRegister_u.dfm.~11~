@@ -1,0 +1,187 @@
+object Form2: TForm2
+  Left = 360
+  Top = 180
+  Caption = 'Tennis Tournament Planner'
+  ClientHeight = 451
+  ClientWidth = 644
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlMain: TPanel
+    Left = 80
+    Top = 24
+    Width = 497
+    Height = 393
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    object lblLogin: TLabel
+      Left = 207
+      Top = 16
+      Width = 79
+      Height = 30
+      Caption = 'Register'
+      Color = clBlack
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblEmail: TLabel
+      Left = 120
+      Top = 228
+      Width = 81
+      Height = 16
+      Caption = 'Email Address'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblPassword: TLabel
+      Left = 120
+      Top = 283
+      Width = 55
+      Height = 16
+      Caption = 'Password'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object imgLogo: TImage
+      Left = 223
+      Top = 52
+      Width = 49
+      Height = 41
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+        0017080600000063EEED9B000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC61050000000970485973000016250000162501495224F0000002
+        2B4944415478DAED954F68D3501CC7BF699AB54993A50BFE19BAC1B4EC8F32D0
+        2278F0300BC20E1E143D5504A75E066330D86DA7FDC18B471D5E040FEE262278
+        F332875E769C0EDC1FC1C16453D944DBD8364D97A4D94BD9069B2F4D43BB21B2
+        0F84107E8FF73EEFFB7B49189B807F08E6BF124A6B26DE7FFE8DD9953FA56759
+        E090685770AE593A58214764F0C50226A6BF53EB5D6D0A86AFC57099C8EDBBD0
+        EC4A06379F7CC0D75F79CFB1CFEE75A2E7D2C9FD137292B930365D91CC36AFFA
+        E2B81E3F563BA1E5948191C935BC9ECF42CD1B604C033C5384CCE8584FE53C17
+        90C32C961E26101582D50B7DFCA123F17419AA6E51EB115B4748534BA2E5F0D3
+        3A57212799F38F975C6576B08B68B0733033396886B9ABD4745C022F45A02802
+        628D329267455C8D096526FBE22E74F7E52A9ECFA815EDAA8465A291CD43370A
+        1025019A1045A08EFB6B58F28C88F1EE232E93BC71178A8E2E7AA7B30557C742
+        39CA932B0C1B0168590379CD20E1D14FC3832E05BDF17A4A408FDC8598A1394F
+        11490E4156C210C97D2F45CB463653C0066553CD521033F79B6A23C4B20C91E0
+        D140127192F1C2D8B090550BB0ACDDCBFC1C68A18CF6D1B2301F241242299500
+        91F2CBDE36D285E07DA89D9638890822876AD96E63ABC8E2DDED13FE849CD7FE
+        D6640AE9A2FF34BC489E0A61F8623DB556F6C3B8983671E76D0A191335A3430E
+        62E24A141247DFA8E7AFE35BCEC2F8270D53AB7A5562E4C5C28DD33CFA3B23AE
+        3215091D3487428742D5B2095F1B25EFC69659D90000000049454E44AE426082}
+      Stretch = True
+    end
+    object lblName: TLabel
+      Left = 120
+      Top = 118
+      Width = 33
+      Height = 16
+      Caption = 'Name'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblSurname: TLabel
+      Left = 120
+      Top = 173
+      Width = 52
+      Height = 16
+      Caption = 'Surname'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblRegister: TLabel
+      Left = 168
+      Top = 358
+      Width = 179
+      Height = 14
+      Caption = 'Already have an accountt? Login'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsUnderline]
+      ParentFont = False
+    end
+    object edtEmailAddress: TEdit
+      Left = 120
+      Top = 250
+      Width = 265
+      Height = 27
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object edtPassword: TEdit
+      Left = 120
+      Top = 305
+      Width = 265
+      Height = 27
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object edtName: TEdit
+      Left = 120
+      Top = 140
+      Width = 265
+      Height = 27
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object edtSurname: TEdit
+      Left = 120
+      Top = 195
+      Width = 265
+      Height = 27
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
+  end
+end

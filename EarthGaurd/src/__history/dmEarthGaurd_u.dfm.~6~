@@ -1,0 +1,42 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 273
+  Width = 389
+  object conEarthGaurd: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Nape\Docum' +
+      'ents\EarthGaurd\EarthGaurd.mdb;Mode=ReadWrite;Persist Security I' +
+      'nfo=False'
+    LoginPrompt = False
+    Mode = cmReadWrite
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 64
+    Top = 112
+  end
+  object tblUser: TADOTable
+    Connection = conEarthGaurd
+    TableName = 'User'
+    Left = 176
+    Top = 112
+  end
+  object dsUser: TDataSource
+    DataSet = tblUser
+    Left = 280
+    Top = 112
+  end
+  object tblCampaign: TADOTable
+    Active = True
+    Connection = conEarthGaurd
+    CursorType = ctStatic
+    TableName = 'Campaign'
+    Left = 176
+    Top = 48
+  end
+  object tblHotspot: TADOTable
+    Connection = conEarthGaurd
+    TableName = 'Hotspot'
+    Left = 176
+    Top = 120
+  end
+end

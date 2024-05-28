@@ -1,0 +1,38 @@
+unit frmMathletes_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Buttons, Spin;
+
+type
+  TForm4 = class(TForm)
+    btnStart: TButton;
+    btnStop: TButton;
+    pnlOutput: TPanel;
+    mmoHighScores: TMemo;
+    mmoPlayerScores: TMemo;
+    pnlTime: TPanel;
+    pnlScore: TPanel;
+    btnReset: TBitBtn;
+    pnlHighScores: TPanel;
+    lblHighScores: TLabel;
+    pnlPlayerScores: TPanel;
+    lblPlayerScores: TLabel;
+    sedTime: TSpinEdit;
+    btnSetTimer: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+
+end.

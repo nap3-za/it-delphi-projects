@@ -1,0 +1,18 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 273
+  Width = 389
+  object conEarthGaurd: TADOConnection
+    Left = 64
+    Top = 112
+  end
+  object tblUser: TADOTable
+    Left = 160
+    Top = 112
+  end
+  object dsEarthGaurd: TADODataSet
+    Parameters = <>
+    Left = 256
+    Top = 112
+  end
+end

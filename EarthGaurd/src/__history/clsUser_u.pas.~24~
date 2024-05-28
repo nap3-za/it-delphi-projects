@@ -1,0 +1,237 @@
+unit clsUser_u;
+
+interface
+
+uses SysUtils, dmEarthGaurd_u;
+
+type
+  TUser = class(TObject)
+  private
+    { private declarations }
+    fName: string;
+    fSurname: string;
+    fUsername: string;
+    fDisability: string;
+    fEmailAddress: string;
+    fPhysicalAddress: string;
+    fPassword: string;
+    fGender: char;
+    fDateOfBirth: TDate;
+    fPhoneNumber: integer;
+    fUserType: string;
+  public
+    { public declarations }
+    constructor Create(pName, pSurname, pUsername, pEmailAddress, pPassword, pUserType: string; pGender: Char; pPhoneNumber: integer);
+    function getName: string;
+    function getSurname: string;
+    function getUsername: string;
+    function getGender: char;
+    function getGenderReadable: string;
+    function getDisability: string;
+    function getEmailAddress: string;
+    function getPhysicalAddress: string;
+    function getPhoneNumber: integer;
+    function getPhoneNumberReadable: string;
+
+    function isDisabled: boolean;
+    function isDisabledReadable: string;
+    function FullNames: string;
+    function Authenticate(pEmail, pPassword: string): Boolean;
+
+    procedure CreateAccount();
+    procedure setName(pName: string);
+    procedure setSurname(pSurname: string);
+    procedure setUsername(pUsername: string);
+    procedure setGender(pGender: Char);
+    procedure setDisability(pDisability: string);
+    procedure setEmailAddress(pEmailAddress: string);
+    procedure setPhysicalAddress(pPhysicalAddress: string);
+    procedure setPhoneNumber(pPhoneNumber: Integer);
+    procedure setPassword(pPassword: string);
+
+
+    function toString: string;
+  end;
+
+implementation
+
+{ TMyClass }
+
+function TUser.Authenticate(pEmail, pPassword: string): Boolean;
+begin
+
+end;
+
+constructor TUser.Create(pName, pSurname, pUsername, pEmailAddress, pPassword, pUserType: string;
+  pGender: string; pPhoneNumber: integer);
+begin
+
+fName := pName;
+fSurname := pSurname;
+fUsername := pUsername;
+fEmailAddress := pEmailAddress;
+fGender := pGender;
+fPhoneNumber := pPhoneNumber;
+fPassword := pPassword;
+
+fDisability := '';
+fPhysicalAddress := '';
+
+end;
+
+procedure TUser.CreateAccount;
+begin
+with dmEarthGaurd_u.DataModule1 do
+  begin
+    tblUser.Insert;
+    tblUser['FirstName'] := fName;
+    tblUser['LastName'] := fSurname;
+    tblUser['Username'] := fUsername;
+    tblUser['Gender'] := getGenderReadable;
+    tblUser['Disability'] := fDisability;
+    tblUser['DateOfBirth'] := fDateOfBirth;
+    tblUser['EmailAddress'] := fEmailAddress;
+    tblUser['PhysicalAddress'] := fPhysicalAddress;
+    tblUser['PhoneNumber'] := fPhoneNumber;
+    tblUser['Password'] := fPassword;
+    tblUser['UserType'] := fUserType;
+    tblUser.Post;
+  end;
+end;
+
+function TUser.FullNames: string;
+begin
+result := fName + ' ' + fSurname;
+end;
+
+function TUser.getDisability: string;
+begin
+Result := fDisability;
+end;
+
+function TUser.getEmailAddress: string;
+begin
+result := fEmailAddress;
+end;
+
+function TUser.getGender: char;
+begin
+result := fGender;
+end;
+
+function TUser.getGenderReadable: string;
+begin
+
+if fGender = 'M' then
+  result := 'Male'
+else
+  result := 'Female';
+
+end;
+
+function TUser.getName: string;
+begin
+result := fName;
+end;
+
+function TUser.getPhoneNumber: integer;
+begin
+result := fPhoneNumber;
+end;
+
+function TUser.getPhoneNumberReadable: string;
+begin
+Result := '0' + IntToStr(fPhoneNumber);
+end;
+
+function TUser.getPhysicalAddress: string;
+begin
+result := fPhysicalAddress;
+
+end;
+
+function TUser.getSurname: string;
+begin
+
+result := fSurname;
+end;
+
+function TUser.getUsername: string;
+begin
+result := fUsername;
+end;
+
+function TUser.isDisabled: boolean;
+begin
+if Length(fDisability) = 0 then
+  Result := True
+else
+  Result := False;
+end;
+
+function TUser.isDisabledReadable: string;
+begin
+if isDisabled then
+  result := 'Yes'
+else
+  Result := 'No';
+end;
+
+procedure TUser.setDisability(pDisability: string);
+begin
+fDisability := pDisability;
+end;
+
+procedure TUser.setEmailAddress(pEmailAddress: string);
+begin
+fEmailAddress := pEmailAddress;
+end;
+
+procedure TUser.setGender(pGender: Char);
+begin
+fGender := pGender
+end;
+
+procedure TUser.setName(pName: string);
+begin
+fName := pName;
+end;
+
+procedure TUser.setPassword(pPassword: string);
+begin
+fPassword := pPassword
+end;
+
+procedure TUser.setPhoneNumber(pPhoneNumber: Integer);
+begin
+fPhoneNumber := pPhoneNumber;
+end;
+
+procedure TUser.setPhysicalAddress(pPhysicalAddress: string);
+begin
+fPhysicalAddress := pPhysicalAddress;
+end;
+
+procedure TUser.setSurname(pSurname: string);
+begin
+fSurname := pSurname;
+end;
+
+procedure TUser.setUsername(pUsername: string);
+begin
+fUsername := pUsername;
+end;
+
+function TUser.toString: string;
+begin
+result := 'Name: ' + #9 + fName;
+result := Concat(Result, #13, 'Surname: ', #9, fSurname);
+result := Concat(Result, #13, 'Username: ', #9, fUsername);
+result := Concat(Result, #13, 'Gender: ', #9, getGenderReadable);
+result := Concat(Result, #13, 'Email: ', #9, fEmailAddress);
+result := Concat(Result, #13, 'Pnone Number: ', #9, getPhoneNumberReadable);
+result := Concat(Result, #13, 'Physical Address: ', #9, fPhysicalAddress);
+result := Concat(Result, #13, 'Disabled: ', #9, isDisabledReadable);
+end;
+
+end.

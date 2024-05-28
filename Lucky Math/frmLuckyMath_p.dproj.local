@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/09/24 07:34:11.144.pas,C:\Users\credo\Documents\RAD Studio\Projects\Unit4.pas=C:\Users\credo\Documents\RAD Studio\Projects\Lucky Math\frmLuckyMath_u.pas</Transaction>
+    <Transaction>2022/09/24 07:34:11.144.dfm,C:\Users\credo\Documents\RAD Studio\Projects\Unit4.dfm=C:\Users\credo\Documents\RAD Studio\Projects\Lucky Math\frmLuckyMath_u.dfm</Transaction>
+    <Transaction>2022/09/24 07:34:23.561.dproj,C:\Users\credo\Documents\RAD Studio\Projects\Project2.dproj=C:\Users\credo\Documents\RAD Studio\Projects\Lucky Math\frmLuckyMath_p.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

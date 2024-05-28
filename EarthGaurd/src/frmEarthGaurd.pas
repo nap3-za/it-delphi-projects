@@ -1,0 +1,591 @@
+unit frmEarthGaurd;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, Buttons, clsUser_u, Validators_u,
+  DateUtils, dmEarthGaurd_u;
+
+type
+  TForm1 = class(TForm)
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    edtPasswordLogin: TEdit;
+    Button1: TButton;
+    Label4: TLabel;
+    Panel2: TPanel;
+    Label5: TLabel;
+    Label8: TLabel;
+    Button2: TButton;
+    Panel3: TPanel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label23: TLabel;
+    edtEmailAddress: TEdit;
+    edtPassword: TEdit;
+    Button3: TButton;
+    rgRegGender: TRadioGroup;
+    edtPhoneNumber: TEdit;
+    edtName: TEdit;
+    edtSurname: TEdit;
+    edtUsername: TEdit;
+    Button4: TButton;
+    Label6: TLabel;
+    dtpDob: TDateTimePicker;
+    Label7: TLabel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    lbl1: TLabel;
+    edtConfirmPassword: TEdit;
+    chkIsAdmin: TCheckBox;
+    edtEmailLogin: TEdit;
+    pgcDashboard: TPageControl;
+    ts4: TTabSheet;
+    lbl18: TLabel;
+    pnl4: TPanel;
+    btnAddCampaign: TButton;
+    btnFilterCampaigns: TButton;
+    btnExportCampaigns: TButton;
+    btn11: TBitBtn;
+    pnl5: TPanel;
+    lbl19: TLabel;
+    lbl20: TLabel;
+    pnl6: TPanel;
+    chk1: TCheckBox;
+    pnl7: TPanel;
+    pnl8: TPanel;
+    pnl10: TPanel;
+    pnl11: TPanel;
+    btn12: TButton;
+    btn13: TButton;
+    pnl12: TPanel;
+    lbl21: TLabel;
+    lbl22: TLabel;
+    pnl13: TPanel;
+    chk2: TCheckBox;
+    pnl14: TPanel;
+    pnl15: TPanel;
+    pnl17: TPanel;
+    pnl18: TPanel;
+    pnl19: TPanel;
+    lbl23: TLabel;
+    lbl24: TLabel;
+    pnl20: TPanel;
+    chk3: TCheckBox;
+    pnl21: TPanel;
+    pnl22: TPanel;
+    pnl24: TPanel;
+    pnl25: TPanel;
+    ts5: TTabSheet;
+    lbl26: TLabel;
+    pnl26: TPanel;
+    lbl27: TLabel;
+    lbl28: TLabel;
+    pnl27: TPanel;
+    pnl28: TPanel;
+    pnl29: TPanel;
+    btn14: TButton;
+    pnl30: TPanel;
+    pnl31: TPanel;
+    lbl29: TLabel;
+    lbl30: TLabel;
+    pnl32: TPanel;
+    pnl33: TPanel;
+    pnl34: TPanel;
+    btn15: TButton;
+    pnl35: TPanel;
+    pnl36: TPanel;
+    lbl31: TLabel;
+    lbl32: TLabel;
+    pnl37: TPanel;
+    pnl38: TPanel;
+    pnl39: TPanel;
+    btn16: TButton;
+    pnl40: TPanel;
+    btn17: TButton;
+    btn18: TButton;
+    pnl41: TPanel;
+    btnAddHotspot: TButton;
+    btnFilterHotspots: TButton;
+    btnExportHotspots: TButton;
+    btn22: TBitBtn;
+    ts6: TTabSheet;
+    pnl42: TPanel;
+    lbl33: TLabel;
+    lbl34: TLabel;
+    lbl35: TLabel;
+    lbl36: TLabel;
+    lbl37: TLabel;
+    lbl38: TLabel;
+    lbl39: TLabel;
+    lbl40: TLabel;
+    lbl41: TLabel;
+    edtSettEmailAddress: TEdit;
+    edtSettPassword: TEdit;
+    btn23: TButton;
+    edtSettDisability: TEdit;
+    rgGender: TRadioGroup;
+    edtSettPhoneNumber: TEdit;
+    edtSettName: TEdit;
+    edtSettSurname: TEdit;
+    edtSettUsername: TEdit;
+    edtSettPhysicaAddress: TEdit;
+    pnlCampaignCount: TPanel;
+    pnlHotspotCount: TPanel;
+    pnlParticipationCount: TPanel;
+    pnl46: TPanel;
+    btnEditUser: TButton;
+    btnExportUserData: TButton;
+    btn26: TBitBtn;
+    pgcAuthentication: TPageControl;
+    pnl43: TPanel;
+    lbl42: TLabel;
+    lbl43: TLabel;
+    pnl44: TPanel;
+    chk5: TCheckBox;
+    pnl45: TPanel;
+    pnl47: TPanel;
+    pnl48: TPanel;
+    pnl49: TPanel;
+    pnl50: TPanel;
+    tsCreaeCampaigns: TTabSheet;
+    dtpCampaigningDate: TDateTimePicker;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    cbbHotspots: TComboBox;
+    lbl4: TLabel;
+    btn1: TButton;
+    tsCreateHotspot: TTabSheet;
+    lbl5: TLabel;
+    rgPollutionTypes: TRadioGroup;
+    rgSeverityLevel: TRadioGroup;
+    btnSubmit: TButton;
+    edtPhysicalAddress: TEdit;
+    procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure btnEditUserClick(Sender: TObject);
+    procedure btnExportUserDataClick(Sender: TObject);
+    procedure btn23Click(Sender: TObject);
+    procedure ts6MouseEnter(Sender: TObject);
+    procedure btnExportHotspotsClick(Sender: TObject);
+    procedure btnFilterHotspotsClick(Sender: TObject);
+    procedure btnAddCampaignClick(Sender: TObject);
+    procedure btnExportCampaignsClick(Sender: TObject);
+    procedure btnFilterCampaignsClick(Sender: TObject);
+    procedure ts4MouseEnter(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure btnAddHotspotClick(Sender: TObject);
+    procedure btnSubmitClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+  private
+    { Private declarations }
+    CurrentScreen: string;
+    UserID: integer;
+    arrCampaigns: array[1..3, 1..7] of string;
+    objValidator: Validators_u.TValidator;
+    procedure SwitchScreens;
+  public
+    { Public declarations }
+    objUser: TUser;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btnExportCampaignsClick(Sender: TObject);
+var
+  tFile: Textfile;
+  sLine: string;
+begin
+// Campaign data to a textfile
+
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+
+    AssignFile(tFile, 'Campaigns-Export.txt');
+
+    Rewrite(tFile);
+
+    tblCampaign.First;
+    while not tblCampaign.Eof do
+    begin
+      sLine := tblCampaign.ToString;
+      Writeln(tFile, sLine);
+      tblCampaign.Next;
+    end;
+
+    CloseFile(tFile);
+  end;
+
+end;
+
+procedure TForm1.btnFilterHotspotsClick(Sender: TObject);
+begin
+// filter hotspots
+end;
+
+procedure TForm1.btnSubmitClick(Sender: TObject);
+var
+  sPhysicalAddress, sSeverityLevel, sPollutionType: string;
+begin
+
+  sPhysicalAddress := edtPhysicalAddress.Text;
+  sSeverityLevel := rgSeverityLevel.Items[rgSeverityLevel.ItemIndex];
+  sPollutionType := rgPollutionTypes.Items[rgPollutionTypes.ItemIndex];
+
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+    tblHotspot.Insert;
+    tblHotspot['PhysicalAddress'] := sPhysicalAddress;
+    tblHotspot['PollutionTypes'] := sPollutionType;
+    tblHotspot['SeverityLevel'] := sSeverityLevel;
+    tblHotspot['Timestamp'] := Today;
+    tblHotspot['IsActive'] := True;
+    tblHotspot.Post;
+  end;
+
+  tsCreateHotspot.TabVisible := False;
+end;
+
+procedure TForm1.btnExportHotspotsClick(Sender: TObject);
+var
+  tFile: Textfile;
+  sLine: string;
+begin
+// Hotspot data to a textfile
+
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+
+    AssignFile(tFile, 'Hotspots-Export.txt');
+
+    Rewrite(tFile);
+
+    tblHotspot.First;
+    while not tblHotspot.Eof do
+    begin
+      sLine := tblHotspot.ToString;
+      Writeln(tFile, sLine);
+      tblHotspot.Next;
+    end;
+
+    CloseFile(tFile);
+  end;
+
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+begin
+// Help dialog
+  ShowMessage('Welcome to Earth Gaurd, the leading digital tool against climate change.' + #13 + #13 + 'To register navigate to the Register tab' + #13 + 'To Login navigate to the Login tab');
+end;
+
+procedure TForm1.btn1Click(Sender: TObject);
+begin
+  tsCreaeCampaigns.TabVisible := False;
+  pgcDashboard.ActivePageIndex := 1;
+end;
+
+procedure TForm1.btn23Click(Sender: TObject);
+begin
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+    tblUser.Filter := 'ID = ' + IntToStr(UserID);
+    tblUser.Filtered := True;
+    tblUser.First;
+
+    tblUser.Edit;
+    tblUser['FirstName'] := edtSettName.Text;
+    tblUser['LastName'] := edtSettSurname.Text;
+    tblUser['Username'] := edtSettUsername.Text;
+    tblUser['Gender'] := rgGender.Items[rgGender.ItemIndex][1];
+    tblUser['Disability'] := edtSettDisability.Text;
+    tblUser['EmailAddress'] := edtSettEmailAddress.Text;
+    tblUser['PhysicalAddress'] := edtSettPhysicaAddress.Text;
+    tblUser['PhoneNumber'] := edtSettPhoneNumber.Text;
+    tblUser['Password'] := edtSettPassword.Text;
+    tblUser.Post;
+  end;
+end;
+
+procedure TForm1.btnEditUserClick(Sender: TObject);
+begin
+// Enable the edits.
+  edtSettName.Enabled := True;
+  edtSettSurname.Enabled := True;
+  edtSettPassword.Enabled := True;
+  edtSettUsername.Enabled := True;
+  edtSettDisability.Enabled := True;
+  edtSettPhoneNumber.Enabled := True;
+  edtSettPhysicaAddress.Enabled := True;
+  edtSettEmailAddress.Enabled := True;
+  rgGender.Enabled := True;
+end;
+
+// [Done]
+procedure TForm1.btnExportUserDataClick(Sender: TObject);
+var
+  tFile: Textfile;
+  sLine: string;
+begin
+// [Done] Export user data
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+    AssignFile(tFile, 'USerData-Export.txt');
+    Rewrite(tFile);
+    Writeln(objUser.toString);
+    CloseFile(tFile);
+  end;
+
+end;
+
+procedure TForm1.btnAddCampaignClick(Sender: TObject);
+begin
+// Create a campaign
+  tsCreaeCampaigns.TabVisible := True;
+end;
+
+procedure TForm1.btnAddHotspotClick(Sender: TObject);
+begin
+  tsCreateHotspot.TabVisible := True;
+end;
+
+procedure TForm1.btnFilterCampaignsClick(Sender: TObject);
+begin
+// filter campaigns
+end;
+
+// [Done]
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  sEmailAddress, sPassword: string;
+begin
+
+  if not objValidator.LengthValidator(sEmailAddress) then
+  begin
+    if not objValidator.EmailValidator(sEmailAddress) then
+    begin
+      ShowMessage('Please enter a valid email address');
+      Exit;
+    end;
+    ShowMessage('Please enter an email address');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(sPassword) then
+  begin
+    ShowMessage('Please enter a password');
+    Exit;
+  end;
+
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+    tblUser.Filter := 'EmailAddress = ' + sEmailAddress + ' AND Password = ' + sPassword;
+    tblUser.Filtered := True;
+    if tblUser.RecordCount = 1 then
+    begin
+      objUser := TUser.Create(tblUser['FirstName'], tblUser['LastName'], tblUser['Username'], tblUser['EmailAddress'], tblUser['Password'], tblUser['UserType'], tblUser['Gender'], tblUser['PhoneNumber']);
+      UserID := tblUser['ID'];
+      SwitchScreens;
+    end
+    else
+      ShowMessage('Invalid credentials');
+  end;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+var
+  sName, sSurname, sUsername, sEmailAddress, sPhoneNumber, sPassword, sConfirmPassword, sUserType: string;
+  sPin: string;
+  cGender: char;
+begin
+
+  sEmailAddress := edtEmailAddress.Text;
+  sPassword := edtPassword.Text;
+  sConfirmPassword := edtConfirmPassword.Text;
+  sName := edtName.Text;
+  sSurname := edtSurname.Text;
+  sPhoneNumber := edtPhoneNumber.Text;
+  cGender := rgRegGender.Items[rgRegGender.ItemIndex][1];
+  sUsername := edtUsername.Text;
+
+  if not objValidator.LengthValidator(sName) then
+  begin
+    ShowMessage('Please enter a name');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(sSurname) then
+  begin
+    ShowMessage('Please enter a surname');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(sUsername) then
+  begin
+    ShowMessage('Please enter a username');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(Copy(sPhoneNumber, 2, Length(sPhoneNumber))) then
+  begin
+    ShowMessage('Please enter a phone number');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(sEmailAddress) then
+  begin
+    if not objValidator.EmailValidator(sEmailAddress) then
+    begin
+      ShowMessage('Please enter a valid email address');
+      Exit;
+    end;
+    ShowMessage('Please enter an email address');
+    Exit;
+  end;
+
+  if not (YearOf(dtpDob.Date) < (YearOf(Today) - 15)) then
+  begin
+    ShowMessage('You have to be 16 years or older to register');
+    Exit;
+  end;
+
+  if not objValidator.LengthValidator(sPassword) or (not objValidator.LengthValidator(sConfirmPassword)) then
+  begin
+    ShowMessage('Please enter a password');
+    Exit;
+  end
+  else
+  begin
+    if sPassword <> sConfirmPassword then
+    begin
+      ShowMessage('Passwords do not match');
+      Exit;
+    end;
+  end;
+
+  sUserType := 'User';
+  if chkIsAdmin.Checked then
+  begin
+    sPin := InputBox('Admin Pin', 'Enter the admin pin code', '00000');
+    if sPin = '12345' then
+      sUserType := 'Admin'
+    else
+      ShowMessage('Invalid admin pin');
+  end;
+
+  try
+    begin
+      objUser := TUser.Create(sName, sSurname, sUsername, sEmailAddress, sPassword, sUserType, cGender, StrToInt(sPhoneNumber));
+      dmEarthGaurd_u.DataModule1.tblUser.Last;
+      UserID := dmEarthGaurd_u.DataModule1.tblUser['ID'];
+    end;
+  except
+    begin
+      ShowMessage('Invalid data provided, please try again');
+      Exit;
+    end;
+  end;
+
+  SwitchScreens;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  objValidator := Validators_u.TValidator.Create;
+  CurrentScreen := 'AUTH';
+end;
+
+// [Done]
+procedure TForm1.SwitchScreens;
+begin
+  if CurrentScreen = 'AUTH' then
+  begin
+    CurrentScreen := 'DASH';
+    pgcAuthentication.Visible := False;
+    pgcDashboard.Visible := True;
+  end
+  else
+  begin
+    CurrentScreen := 'AUTH';
+    pgcAuthentication.Visible := True;
+    pgcDashboard.Visible := False;
+  end;
+
+end;
+
+// [Done]
+procedure TForm1.ts4MouseEnter(Sender: TObject);
+var
+  iCount: integer;
+begin
+// Populate campaigns
+  with dmEarthGaurd_u.DataModule1 do
+  begin
+    tblCampaign.First;
+    iCount := 1;
+    while not tblCampaign.Eof do
+    begin
+      arrCampaigns[iCount][1] := tblCampaign['User'];
+      arrCampaigns[iCount][2] := tblCampaign['Timestamp'];
+      arrCampaigns[iCount][3] := tblCampaign['Title'];
+      arrCampaigns[iCount][4] := tblCampaign['Hotspot'];
+      arrCampaigns[iCount][5] := tblHotspot['PollutionType'];
+      arrCampaigns[iCount][6] := tblHotspot['SeverityLevel'];
+      arrCampaigns[iCount][7] := tblCampaign['CampaigningDate'];
+
+      if iCount = 3 then
+        Break;
+      iCount := iCount + 1;
+      tblCampaign.Next;
+
+    end;
+  end;
+
+end;
+
+procedure TForm1.ts6MouseEnter(Sender: TObject);
+begin
+// Populate some data
+  edtSettName.Text := objUser.getName;
+  edtSettName.Enabled := False;
+  edtSettSurname.Text := objUser.getSurname;
+  edtSettSurname.Enabled := False;
+  edtSettPhysicaAddress.Text := objUser.getPhysicalAddress;
+  edtSettPhysicaAddress.Enabled := False;
+  edtSettEmailAddress.Text := objUser.getEmailAddress;
+  edtSettEmailAddress.Enabled := False;
+  edtSettPhysicaAddress.Text := objUser.getPhysicalAddress;
+  edtSettPhysicaAddress.Enabled := False;
+  edtSettPhoneNumber.Text := IntToStr(objUser.getPhoneNumber);
+  edtSettPhoneNumber.Enabled := False;
+  edtSettDisability.Text := objUser.getDisability;
+  edtSettDisability.Enabled := False;
+  edtSettUsername.Text := objUser.getUsername;
+  edtSettUsername.Enabled := False;
+
+  pnlParticipationCount.Caption := '0';
+  pnlCampaignCount.Caption := '0';
+  pnlHotspotCount.Caption := '0';
+end;
+
+end.
+

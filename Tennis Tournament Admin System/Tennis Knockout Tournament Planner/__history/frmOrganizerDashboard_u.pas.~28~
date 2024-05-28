@@ -1,0 +1,115 @@
+unit frmOrganizerDashboard_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, ExtCtrls, Grids;
+
+type
+  TForm3 = class(TForm)
+    pgcMain: TPageControl;
+    tsTournaments: TTabSheet;
+    tsMatches: TTabSheet;
+    tsParticipants: TTabSheet;
+    pnlTournamentsList: TPanel;
+    strngrdTournamentsList: TStringGrid;
+    pnlTournaments: TPanel;
+    pnlTournament2: TPanel;
+    pnlTournament3: TPanel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    btnPrevious: TButton;
+    Button1: TButton;
+    Button2: TButton;
+    lblLogin: TLabel;
+    Label1: TLabel;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Label2: TLabel;
+    ComboBox1: TComboBox;
+    cbxMatchesSortOptions: TComboBox;
+    Panel9: TPanel;
+    Label3: TLabel;
+    Panel10: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Panel11: TPanel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Panel12: TPanel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Panel13: TPanel;
+    Label16: TLabel;
+    Panel14: TPanel;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Panel15: TPanel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Panel16: TPanel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Panel17: TPanel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Panel18: TPanel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Panel19: TPanel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Label39: TLabel;
+    Label40: TLabel;
+    ComboBox2: TComboBox;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm3.FormActivate(Sender: TObject);
+begin
+strngrdTournamentsList.Cells[0,0] := 'Participants';
+strngrdTournamentsList.Cells[1,0] := 'Results';
+end;
+
+end.

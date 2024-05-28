@@ -1,0 +1,16 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 213
+  Width = 318
+  object conTennisTournamentPlanner: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\SJ VD MERW' +
+      'E\Documents\RAD Studio\Projects\Tennis Knockout Tournament Plann' +
+      'er\TennisTournamentPlanner.accdb;Mode=ReadWrite;Persist Security' +
+      ' Info=False'
+    LoginPrompt = False
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 64
+    Top = 64
+  end
+end

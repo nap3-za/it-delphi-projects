@@ -1,0 +1,315 @@
+unit frmLuckyMath_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Math;
+
+type
+  TForm4 = class(TForm)
+    pnlOperator: TPanel;
+    pnlNum1: TPanel;
+    pnlNum2: TPanel;
+    pnlAnswer: TPanel;
+    pnlEqual: TPanel;
+    pnlOperators: TPanel;
+    btnPlay: TButton;
+    btnMul: TButton;
+    btnAdd: TButton;
+    btnSub: TButton;
+    btnDiv: TButton;
+    btnSkip: TButton;
+    btnStats: TButton;
+    btnReset: TButton;
+    memScore: TMemo;
+    btnProcessAnswer: TButton;
+    btnEqGenerator: TButton;
+    pnlTime: TPanel;
+    tmrGameTimer: TTimer;
+    btnScoreBoardClear: TButton;
+    procedure btnPlayClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnProcessAnswerClick(Sender: TObject);
+    procedure btnEqGeneratorClick(Sender: TObject);
+    procedure btnSubClick(Sender: TObject);
+    procedure btnMulClick(Sender: TObject);
+    procedure btnDivClick(Sender: TObject);
+    procedure btnSkipClick(Sender: TObject);
+    procedure btnResetClick(Sender: TObject);
+    procedure btnStatsClick(Sender: TObject);
+    procedure tmrGameTimerTimer(Sender: TObject);
+    procedure btnScoreBoardClearClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+const
+  arrOperators: array[0..3] of string = ('+', '-', 'x', '/');
+
+var
+  iNum1, iNum2, iAns, iOperator, iSubmition, iProblemCount, iCorrect, iFail: Integer;
+  iTime, iTimeSeconds: integer;
+  sOperator: string;
+
+procedure TForm4.btnAddClick(Sender: TObject);
+begin
+  // Set iSubmition to the position of the '+' in the list/array
+  // of operators/mathematical signs (arrOperators)
+  iSubmition := 0;
+
+  // Click the invisible button that processes the answer
+  // so that it can determine whether the anser is correct
+  btnProcessAnswer.Click;
+
+end;
+
+procedure TForm4.btnSubClick(Sender: TObject);
+begin
+  // Set iSubmition to the position of the '-' in the list/array
+  // of operators/mathematical signs (arrOperators)
+  iSubmition := 1;
+
+  // Click the invisible button that processes the answer
+  // so that it can determine whether the anser is correct
+  btnProcessAnswer.Click;
+end;
+
+procedure TForm4.btnMulClick(Sender: TObject);
+begin
+  // Set iSubmition to the position of the 'x' in the list/array
+  // of operators/mathematical signs (arrOperators)
+  iSubmition := 2;
+
+  // Click the invisible button that processes the answer
+  // so that it can determine whether the anser is correct
+  btnProcessAnswer.Click;
+end;
+
+procedure TForm4.btnDivClick(Sender: TObject);
+begin
+  // Set iSubmition to the position of the '/' in the list/array
+  // of operators/mathematical signs (arrOperators)
+  iSubmition := 3;
+
+  // Click the invisible button that processes the answer
+  // so that it can determine whether the anser is correct
+  btnProcessAnswer.Click;
+end;
+
+
+procedure TForm4.btnEqGeneratorClick(Sender: TObject);
+begin
+
+  // When an equation is generated, increase the amount of problems
+  Inc(iProblemCount);
+
+  // Generate the equation
+  iNum1 := RandomRange(1, 100);
+  iNum2 := RandomRange(-50, 100);
+
+  // A random number used as a position to select a random
+  // mathematical sign/operator
+  iOperator := RandomRange(0, 4);
+
+  // We use arrNameOfArray[<iPosition>] to select an item in the list
+  // <name of array>[<position of item>]
+  sOperator := arrOperators[iOperator];
+
+  // The case statement
+  // This is a simplified version of the if else statement
+
+  // This statement will execute the green begin & end if iOperator
+  // is equal to the blue numbers
+  case iOperator of
+    0:
+      begin
+        iAns := iNum1 + iNum2;
+      end;
+    1:
+      begin
+        iAns := iNum1 - iNum2
+      end;
+    2:
+      begin
+        iAns := iNum1 * iNum2;
+      end;
+    3:
+      begin
+        // Avoiding decimals and dividing zero since that is imposible
+        while ((iNum1 < iNum2) and (iNum1 mod iNum2 <> 0)) or (iNum1 mod iNum2 <> 0) or (iNum1 < iNum2) do
+        begin
+          iNum1 := RandomRange(1, 100);
+          iNum2 := RandomRange(-50, 100);
+        end;
+
+        // We use round to turn the float into an integer
+        // remove it and see the error you get
+        iAns := Round(iNum1 / iNum2);
+      end
+    else
+    begin
+      //
+    end;
+  end;
+
+  // Output the equation
+  pnlNum1.Caption := IntToStr(iNum1);
+  pnlOperator.Caption := '';
+  pnlNum2.Caption := IntToStr(iNum2);
+  pnlAnswer.Caption := IntToStr(iAns);
+end;
+
+
+
+procedure TForm4.btnPlayClick(Sender: TObject);
+begin
+
+  // Ask for the time
+  iTime := StrToInt(InputBox('Time', 'Enter the time (minutes):','1'));
+  iTimeSeconds := iTime * 60;
+
+  // Start the timer
+  tmrGameTimer.Enabled := True;
+
+  // Trigger the event that creates an equation
+  btnEqGenerator.Click;
+
+  // Enable some buttons
+  btnAdd.Enabled := True;
+  btnSub.Enabled := True;
+  btnMul.Enabled := True;
+  btnDiv.Enabled := True;
+  btnSkip.Enabled := True;
+  btnPlay.Enabled := False;
+end;
+
+procedure TForm4.btnProcessAnswerClick(Sender: TObject);
+begin
+
+  // If the submition (set by the first 4 procedures) is equal
+  // to the operator (set by the EqGenerator button) then it means
+  // they are correct
+  if iSubmition = iOperator then
+  begin
+    // Show them the operator/mathematical sign
+    memScore.Lines.Add(arrOperators[iSubmition] + #9 + 'Yes');
+
+    // Increase the number of passed problems
+    Inc(iCorrect);
+  end
+  else
+  begin
+    // Show them the correct operator/mathematical sign
+    memScore.Lines.Add(arrOperators[iOperator] + #9 + 'No');
+
+    // Increase the number of failed problems
+    Inc(iFail);
+  end;
+
+  // Generate a new equation
+  btnEqGenerator.Click;
+end;
+
+procedure TForm4.btnResetClick(Sender: TObject);
+begin
+pnlNum1.Caption := '';
+pnlNum2.Caption := '';
+pnlOperator.Caption := '';
+pnlAnswer.Caption := '';
+
+iProblemCount := 0;
+iCorrect := 0;
+iFail := 0;
+iSubmition := -1;
+iOperator := -1;
+
+btnAdd.Enabled := False;
+btnSub.Enabled := False;
+btnMul.Enabled := False;
+btnDiv.Enabled := False;
+btnSkip.Enabled := False;
+tmrGameTimer.Enabled := False;
+iTime := 0;
+iTimeSeconds := 0;
+pnlTime.Caption := '00:00';
+btnPlay.Enabled := True;
+
+end;
+
+procedure TForm4.btnScoreBoardClearClick(Sender: TObject);
+begin
+memScore.Clear;
+end;
+
+procedure TForm4.btnSkipClick(Sender: TObject);
+begin
+btnEqGenerator.Click;
+end;
+
+procedure TForm4.btnStatsClick(Sender: TObject);
+begin
+// Outputs the problems count, number of correct and incorrect
+memScore.Lines.Add(#13 + 'Time : ' + IntToStr(iTime) + ' minute(s)');
+memScore.Lines.Add(#13 + 'Problem Count : ' + IntToStr(iProblemCount-1));
+memScore.Lines.Add('Correct : ' + IntToStr(iCorrect));
+memScore.Lines.Add('Incorrect : ' + IntToStr(iFail));
+
+end;
+
+
+                             
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+  // Initializing global variables
+  // so we know what is in them
+
+  // If iSubmition = 0 then it means they seleceted +
+  // so use -1 to indicate that no answer has been submitted
+  iSubmition := -1;
+
+  // Same thing as above
+  iOperator := -1;
+
+  // No problems have been solved
+  iProblemCount := 0;
+
+  // No failed problems
+  iFail := 0;
+
+  // No passed problems
+  iCorrect := 0;
+end;
+
+procedure TForm4.tmrGameTimerTimer(Sender: TObject);
+var
+  iM, iSec, iH: integer;
+begin
+
+  if iTimeSeconds = -1 then
+  begin
+    tmrGameTimer.Enabled := False;
+    // Show the stats then reset
+    btnStats.Click;
+    btnReset.Click;
+  end
+  else
+  begin
+    iM := iTimeSeconds div 60;
+    iSec := (iTimeSeconds - (iM * 60)) mod 60;
+    pnlTime.Caption := IntToStr(iM) + ':' + IntToStr(iSec);
+    iTimeSeconds := iTimeSeconds - 1;
+  end;
+end;
+
+end.
+

@@ -1,0 +1,134 @@
+unit frmLuckyMath_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Math;
+
+type
+  TForm4 = class(TForm)
+    pnlOperator: TPanel;
+    pnlNum1: TPanel;
+    pnlNum2: TPanel;
+    pnlAnswer: TPanel;
+    pnlEqual: TPanel;
+    pnlOperators: TPanel;
+    btnPlay: TButton;
+    btnMul: TButton;
+    btnAdd: TButton;
+    btnSub: TButton;
+    btnDiv: TButton;
+    btnSkip: TButton;
+    btnStop: TButton;
+    btnReset: TButton;
+    memScore: TMemo;
+    btnProcessAnswer: TButton;
+    btnEqGenerator: TButton;
+    procedure btnPlayClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnProcessAnswerClick(Sender: TObject);
+    procedure btnEqGeneratorClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+const
+  arrOperators: array[0..3] of string = ('+', '-', 'x', '/');
+
+var
+  iNum1, iNum2, iAns, iOperator, iSubmition, iProblemNumber: Integer;
+  sOperator: string;
+
+procedure TForm4.btnAddClick(Sender: TObject);
+begin
+  iSubmition := 0;
+  btnProcessAnswer.Click;
+end;
+
+procedure TForm4.btnEqGeneratorClick(Sender: TObject);
+begin
+  iNum1 := RandomRange(0, 100);
+  iNum2 := RandomRange(-50, 100);
+  iOperator := RandomRange(0, 4);
+  sOperator := arrOperators[iOperator];
+
+  case iOperator of
+    0:
+      begin
+        iAns := iNum1 + iNum2;
+      end;
+    1:
+      begin
+        iAns := iNum1 - iNum2
+      end;
+    2:
+      begin
+        iAns := iNum2 * iNum2;
+      end;
+    3:
+      begin
+        while (iNum1 > iNum2) and (iNum1 mod iNum2 = 1) do
+        begin
+          iNum1 := RandomRange(0, 100);
+          iNum2 := RandomRange(-50, 100);
+        end;
+        iAns := Round(iNum2 / iNum2);
+      end;
+  end;
+
+  pnlNum1.Caption := IntToStr(iNum1);
+  pnlOperator.Caption := '';
+  pnlNum2.Caption := IntToStr(iNum2);
+  pnlAnswer.Caption := IntToStr(iAns);
+end;
+
+procedure TForm4.btnPlayClick(Sender: TObject);
+begin
+  iProblemNumber := 1;
+  btnEqGenerator.Click;
+end;
+
+procedure TForm4.btnProcessAnswerClick(Sender: TObject);
+begin
+  Inc(iProblemNumber);
+  if iSubmition <> -1 then
+  begin
+    case iSubmition of
+      iOperator:
+        begin
+          memScore.Lines.Add(IntToStr(iProblemNumber) + #9 + 'Yes');
+        end;
+    else
+      begin
+        memScore.Lines.Add(IntToStr(iProblemNumber) + #9 + 'No');
+      end;
+    end;
+  end
+  else
+  begin
+    ShowMessage('No answer provided');
+  end;
+
+
+
+
+end;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+  iSubmition := -1;
+  iOperator := -1;
+end;
+
+end.
+
